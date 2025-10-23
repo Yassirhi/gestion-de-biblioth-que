@@ -34,12 +34,12 @@ function AfficherLivres(livres) {
 function TrierParNom(livres) {
    let o=prompt("Voulez-vous trier les livres ascendant?(oui/non) : ")
     if (o==="oui") {
-        livres.sort((a, b) => b.titre.localeCompare(a.titre));
+        livres.sort((a, b) => a.titre.localeCompare(b.titre));
         console.log(livres);
     } else if (o==="non"){
        let i=prompt("Voulez-vous trier les livres descendant ?(oui/non) :")
         if (i==="oui") {
-            livres.sort((a, b) => a.titre.localeCompare(b.titre));
+            livres.sort((a, b) => b.titre.localeCompare(a.titre));
             console.log(livres);
         }
         
@@ -100,6 +100,7 @@ function emprunter(livres,abonnes) {
     let exist=false;
     let abo=false;
     let enter =0;
+    if(livres.length !=0){
     let n=prompt("Entrer votre nom : ")
     for (let i = 0; i < abonnes.length; i++) {
         if(abonnes[i].nom===n){
@@ -124,8 +125,9 @@ function emprunter(livres,abonnes) {
             }
         }
     }
+}else{ tst()}
     if(abo==false){console.log("======================================");
-        console.log("Vous n'êtes pas abonné")}
+        console.log("Vous n'êtes pas abonné(e)!")}
     if (enter === 1 && exist==false) {console.log("Le livre n'existe pas !")}
 }
 
@@ -148,6 +150,7 @@ function retour(livres,emprunts,titre) {
 }
 
 function AfficherEmpr(emprunts,abonnes,v) {
+    let exist=false;
     for (let j = 0; j < abonnes.length; j++) {
         if(abonnes[j].nom==v){
             for (let i = 0; i < emprunts.length; i++) {
@@ -155,8 +158,13 @@ function AfficherEmpr(emprunts,abonnes,v) {
                     console.log(emprunts[i]);
                 }       
             }
+            exist=true;
         }
     }
+    if (exist==false) {
+        console.log("=====================================")
+        console.log("Abonné(e) n'est existe pas ")}
+        console.log("=====================================")
     tst();
 }
 
@@ -268,6 +276,8 @@ switch (d) {
                     break;                    
              
                 default:
+                    console.log("Entrer un choix valide")
+                    tst();
                     break;
              }
 
