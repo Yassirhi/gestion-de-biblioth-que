@@ -260,7 +260,7 @@ switch (d) {
                     break;
                 case "2":
                     l=prompt("Entrer le titre de livre que vous voulez retourner : ")
-                    retour(livres,l)
+                    retour(livres,emprunts,l)
                     break;
                 case "3":
                     v=prompt("Entrer le nom de l'abonné(e) :")
